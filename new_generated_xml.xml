@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='utf-8'?>
+<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" date="2023-12-13 05:14"
+               xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd">
+    <company>DIGITAL HOME</company>
+    <merchantid>2680005</merchantid>
+    <offers>
+        <offer sku="113138461_778497">
+            <model>Apple iPhone 15 Pro Max 512Gb серый</model>
+            <brand>без бренда</brand>
+            <availabilities>
+                <availability available="yes" storeId="PP5"/>
+            </availabilities>
+            <cityprices>
+                <cityprice cityId="710000000">939000</cityprice>
+            </cityprices>
+        </offer>
+        <offer sku="113137929_607941">
+            <model>Apple iPhone 15 128Gb голубой</model>
+            <brand>без бренда</brand>
+            <availabilities>
+                <availability available="yes" storeId="PP5"/>
+            </availabilities>
+            <cityprices>
+                <cityprice cityId="710000000">499000</cityprice>
+            </cityprices>
+        </offer>
+        <offer sku="106363023_142310">
+            <model>Apple iPhone 14 128Gb черный</model>
+            <brand>без бренда</brand>
+            <availabilities>
+                <availability available="yes" storeId="PP5"/>
+            </availabilities>
+            <cityprices>
+                <cityprice cityId="710000000">400000</cityprice>
+            </cityprices>
+        </offer>
+        <offer sku="106363155_433942">
+            <model>Apple iPhone 14 256Gb голубой</model>
+            <brand>без бренда</brand>
+            <availabilities>
+                <availability available="yes" storeId="PP5"/>
+                <availability available="yes" storeId="PP4"/>
+            </availabilities>
+            <cityprices>
+                <cityprice cityId="710000000">485980</cityprice>
+                <cityprice cityId="351010000">508990</cityprice>
+            </cityprices>
+        </offer>
+        <offer sku="113138191_980611">
+            <model>Apple iPhone 15 Pro 256Gb черный</model>
+            <brand>без бренда</brand>
+            <availabilities>
+                <availability available="yes" storeId="PP5"/>
+            </availabilities>
+            <cityprices>
+                <cityprice cityId="710000000">750000</cityprice>
+            </cityprices>
+        </offer>
+        <offer sku="106363344_560676">
+            <model>Apple iPhone 14 Pro Max 512Gb фиолетовый</model>
+            <brand>без бренда</brand>
+            <availabilities>
+                <availability available="yes" storeId="PP5"/>
+                <availability available="yes" storeId="PP4"/>
+            </availabilities>
+            <cityprices>
+                <cityprice cityId="710000000">779990</cityprice>
+                <cityprice cityId="351010000">908990</cityprice>
+            </cityprices>
+        </offer>
+        <offer sku="113138629_687978">
+            <model>Apple iPhone 15 Pro Max 1Tb белый</model>
+            <brand>без бренда</brand>
+            <availabilities>
+                <availability available="yes" storeId="PP5"/>
+            </availabilities>
+            <cityprices>
+                <cityprice cityId="710000000">1199900</cityprice>
+            </cityprices>
+        </offer>
+        <offer sku="113137897_749019">
+            <model>Apple iPhone 15 256Gb черный</model>
+            <brand>без бренда</brand>
+            <availabilities>
+                <availability available="yes" storeId="PP5"/>
+            </availabilities>
+            <cityprices>
+                <cityprice cityId="710000000">599980</cityprice>
+            </cityprices>
+        </offer>
+        <offer sku="113137931_236384">
+            <model>Apple iPhone 15 256Gb голубой</model>
+            <brand>без бренда</brand>
+            <availabilities>
+                <availability available="yes" storeId="PP5"/>
+            </availabilities>
+            <cityprices>
+                <cityprice cityId="710000000">600000</cityprice>
+            </cityprices>
+        </offer>
+        <offer sku="113137790_547931">
+            <model>Apple iPhone 15 128Gb черный</model>
+            <brand>без бренда</brand>
+            <availabilities>
+                <availability available="yes" storeId="PP5"/>
+            </availabilities>
+            <cityprices>
+                <cityprice cityId="710000000">500000</cityprice>
+            </cityprices>
+        </offer>
+        <offer sku="106363112_544996">
+            <model>Apple iPhone 14 256Gb черный</model>
+            <brand>без бренда</brand>
+            <availabilities>
+                <availability available="yes" storeId="PP5"/>
+            </availabilities>
+            <cityprices>
+                <cityprice cityId="710000000">499990</cityprice>
+            </cityprices>
+        </offer>
+        <offer sku="106363342_763641">
+            <model>Apple iPhone 14 Pro Max 256Gb фиолетовый</model>
+            <brand>без бренда</brand>
+            <availabilities>
+                <availability available="yes" storeId="PP5"/>
+            </availabilities>
+            <cityprices>
+                <cityprice cityId="710000000">750000</cityprice>
+            </cityprices>
+        </offer>
+        <offer sku="106363322_493494">
+            <model>Apple iPhone 14 Pro 512Gb фиолетовый</model>
+            <brand>без бренда</brand>
+            <availabilities>
+                <availability available="yes" storeId="PP5"/>
+            </availabilities>
+            <cityprices>
+                <cityprice cityId="710000000">919930</cityprice>
+            </cityprices>
+        </offer>
+        <offer sku="106363150_721723">
+            <model>Apple iPhone 14 128Gb голубой</model>
+            <brand>без бренда</brand>
+            <availabilities>
+                <availability available="yes" storeId="PP5"/>
+            </availabilities>
+            <cityprices>
+                <cityprice cityId="710000000">404980</cityprice>
+            </cityprices>
+        </offer>
+        <offer sku="106363293_730593">
+            <model>Apple iPhone 14 Pro Max 512Gb черный</model>
+            <brand>без бренда</brand>
+            <availabilities>
+                <availability available="yes" storeId="PP5"/>
+            </availabilities>
+            <cityprices>
+                <cityprice cityId="710000000">899980</cityprice>
+            </cityprices>
+        </offer>
+        <offer sku="106363303_467856">
+            <model>Apple iPhone 14 Pro Max 128Gb фиолетовый</model>
+            <brand>без бренда</brand>
+            <availabilities>
+                <availability available="yes" storeId="PP5"/>
+            </availabilities>
+            <cityprices>
+                <cityprice cityId="710000000">650020</cityprice>
+            </cityprices>
+        </offer>
+    </offers>
+</kaspi_catalog>

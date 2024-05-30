@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Digital Home kaspi bot</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-size: 12px;
+        }
+
+        th, td {
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+
+        th {
+            text-align: left;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .header, .footer {
+            background-color: #333;
+            padding: 10px;
+            color: white;
+            text-align: center;
+        }
+
+        /* Custom style for full-width table */
+        .full-width-table {
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: 1rem;
+            background-color: transparent;
+        }
+
+        .full-width-table thead th {
+            border-bottom-width: 2px;
+        }
+
+        .full-width-table td, .full-width-table th {
+            padding: 0.75rem;
+            text-align: center;
+        }
+
+        /* Стили для слайдбара */
+        #priceSlider {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100%;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 20px;
+            z-index: 1;
+            transition: right 0.3s ease;
+        }
+
+        .close-btn {
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        /* Стили для кнопки в хедере */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Дополнительные стили для кнопки */
+        .header button {
+            margin-left: 10px; /* Добавьте отступ между заголовком и кнопкой при необходимости */
+        }
+
+        #priceSlider .form-label {
+            margin-bottom: 5px;
+        }
+
+        #priceSlider .form-control {
+            margin-bottom: 15px;
+        }
+
+        #priceSlider .btn-success {
+            margin-top: 15px;
+        }
+
+        .footer {
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .footer p {
+            margin-bottom: 0;
+        }
+
+        /* Стили для изменения цвета ссылок в таблице */
+
+
+        .full-width-table a {
+            color: #333333; /* Замените на желаемый цвет ссылок */
+            text-decoration: none; /* Убрать подчеркивание у ссылок */
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -40%;
+            width: 40%;
+            height: 100%;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 10px;
+            z-index: 1;
+            transition: right 0.3s ease;
+        }
+
+        .close-btn {
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        #priceContent {
+            padding: 10px;
+        }
+
+        .price-input {
+            margin: 5px 0;
+            padding: 5px;
+            width: 80%;
+        }
+
+        #priceSidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100%;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 20px;
+            z-index: 2;
+            transition: right 0.3s ease;
+        }
+
+        .price-input-container {
+            margin-bottom: 10px;
+        }
+
+        .price-label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .price-input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        .submit-button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            background-color: #45a049;
+        }
+
+        .close-btn {
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+
+
+
+
+    </style>
+</head>
+<body>
+<!-- Header -->
+<div class="header">
+    <h2>Digital Home kaspi bot</h2>
+
+
+    <!-- Кнопка для открытия слайдбара -->
+    <button type="button" class="btn btn-primary" onclick="openPriceSlider()">Калькулятор для рассчета цены</button>
+
+</div>
+
+<div class="input-group mb-3">
+    <input type="text" class="form-control" id="searchInput" placeholder="Поиск по имени">
+    <button id="searchButton" class="btn btn-outline-info" type="button" onclick="searchTable()">Найти</button>
+</div>
+
+
+<!-- Sidebar content -->
+<div class="sidebar" id="priceSidebar">
+    <span class="close-btn" onclick="closeSidebar()">×</span>
+    <div id="priceContent"></div>
+</div>
+
+<!-- Table with Bootstrap styles -->
+<!-- ... (previous code) ... -->
+
+<!-- Table with Bootstrap styles -->
+<!-- ... (previous code) ... -->
+
+<!-- Table with Bootstrap styles -->
+<div class="container mt-3">
+    <table class="table table-bordered full-width-table">
+        <thead>
+        <tr>
+            <th>Имя</th>
+            <th>Ссылка</th>
+            <th>SKU</th>
+            <th>Цена</th>
+            <th>Места продажи</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in items %}
+        <tr onclick="showPrices({{ item | safe }})">
+            <td>{{ item['name'] }}</td>
+            <td><a href="{{ item['href'] }}" target="_blank" >{{ item['href'] }}</a></td>
+            <td>{{ item['sku'] }}</td>
+            <td>{{ item['price'] }}</td>
+            <td>{{ item['points'] }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- ... (remaining code) ... -->
+
+
+<!-- ... (remaining code) ... -->
+
+
+<!-- Слайдбар с формами для расчета цены -->
+<div id="priceSlider" class="bg-light">
+    <span class="close-btn" onclick="closePriceSlider()">×</span>
+    <!-- Формы для ввода данных с использованием Bootstrap -->
+    <div class="mb-3">
+        <label for="cost" class="form-label">Себестоимость:</label>
+        <input type="number" class="form-control" id="cost" placeholder="Введите себестоимость">
+    </div>
+
+    <div class="mb-3">
+        <label for="margin" class="form-label">Желаемая маржа :</label>
+        <input type="number" class="form-control" id="margin" placeholder="Введите желаемую маржу">
+    </div>
+
+    <div class="mb-3">
+        <label for="otherExpenses" class="form-label">Другие расходы:</label>
+        <input type="number" class="form-control" id="otherExpenses" placeholder="Введите другие расходы">
+    </div>
+
+    <!-- Кнопка для расчета цены -->
+    <button type="button" class="btn btn-primary" onclick="calculatePrice()">Рассчитать</button>
+
+    <!-- Результат расчета -->
+    <p id="result" class="mt-3">Рекомендуемая цена: 0.00</p>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    <p>&copy; 2023 </p>
+</div>
+
+<!-- Bootstrap JS и Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Ваш существующий скрипт -->
+<script>
+    // Функции для управления слайдбаром
+    function openPriceSlider() {
+        var priceSlider = document.getElementById('priceSlider');
+        var searchButton = document.getElementById('searchButton');
+
+        priceSlider.style.right = '0';
+        searchButton.style.visibility = 'hidden';
+    }
+
+    function closePriceSlider() {
+        var priceSlider = document.getElementById('priceSlider');
+        var searchButton = document.getElementById('searchButton');
+
+        priceSlider.style.right = '-400px';
+        searchButton.style.visibility = 'visible';
+    }
+
+
+    // Функция для расчета цены
+    function calculatePrice() {
+        // Получение значений из форм
+        var cost = document.getElementById('cost').value || 0;
+        var margin = document.getElementById('margin').value || 0;
+        var otherExpenses = document.getElementById('otherExpenses').value || 0;
+
+        // Расчет рекомендуемой цены
+        var recommendedPrice = ((parseFloat(cost) + parseFloat(margin) + parseFloat(otherExpenses)) / 0.876);
+
+        // Вывод результата
+        document.getElementById('result').innerHTML = "Рекомендуемая цена: $" + recommendedPrice.toFixed(2);
+    }
+
+    function showPrices(item) {
+        var sidebar = document.getElementById('priceSidebar');
+        var content = document.getElementById('priceContent');
+
+        // No need to parse if item is already an object
+        var itemObj = item;
+
+        // Display additional information in the sidebar
+        content.innerHTML = `
+        <strong>Имя товара:</strong> ${itemObj.name}<br>
+        <strong>Ссылка:</strong> <a href="${itemObj.href}">${itemObj.href}</a><br>
+        <strong>Id товара (SKU):</strong> ${itemObj.sku}<br>
+        <strong>Цена на продажу:</strong> ${itemObj.price}<br><br>
+        <strong>Введите цены для каждого места продажи:</strong><br>
+    `;
+        var savedPrices = JSON.parse('{{ saved_prices_json | safe }}');
+// Check if points is a string with comma-separated values
+        if (typeof item.points === 'string') {
+            var pointsArray = item.points.split(',').map(function (point) {
+                return point.trim();
+            });
+
+            var savedMinPrices = savedPrices[item.sku] ? savedPrices[item.sku].split(',') : '';
+            pointsArray.forEach(function (point, index) {
+                var savedPrice = savedMinPrices.length > index ? savedMinPrices[index] : '';
+
+                // Create a container div for each input
+                var container = document.createElement('div');
+                container.className = 'price-input-container';
+
+                // Add the label text above the input
+                container.innerHTML += `
+            <label class="price-label">Минимальная цена для ${point}</label>
+            <input class="price-input" type="text" placeholder="Введите минимальную цену" value="${savedPrice}">
+        `;
+
+                // Append the container to the content element
+                content.appendChild(container);
+            });
+        } else {
+            content.innerHTML += `<em>Нет информации о ценах.</em>`;
+        }
+
+        var submitButton = document.createElement('button');
+        submitButton.innerText = 'Submit Prices';
+        submitButton.className = 'btn btn-primary'; // Add Bootstrap classes
+        submitButton.onclick = function () {
+            submitPrices(item); // Отправляем исходный объект item
+        };
+        content.appendChild(submitButton);
+
+        sidebar.style.right = '0';
+    }
+
+    function submitPrices(item) { // Параметр должен соответствовать передаваемому JSON
+        var minPrices = [];
+        document.querySelectorAll('.price-input').forEach(function (input) {
+            minPrices.push(input.value);
+        });
+        console.log('Sending:', {sku: item.sku, min_prices: minPrices.join(',')}); // Добавлено логирование
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/submit_prices", true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify({
+            sku: item.sku, // Предполагаем, что item - это уже объект
+            min_prices: minPrices.join(',')
+        }));
+
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                console.log('Response:', xhr.responseText); // Логирование ответа сервера
+                closeSidebar();
+            } else {
+                console.error('Error submitting prices', xhr.status, xhr.responseText);
+            }
+        };
+
+    }
+
+    function closeSidebar() {
+        var sidebar = document.getElementById('priceSidebar');
+        sidebar.style.right = '-40%';
+    }
+
+
+    function searchTable() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.querySelector(".full-width-table");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0]; // Change the index to the column you want to search
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+</script>
+</body>
+</html>
